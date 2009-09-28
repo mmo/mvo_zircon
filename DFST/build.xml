@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<project name="mvo_zircon" default="build_war" basedir=".">
+
+<path id="classpath">
+    <fileset dir="lib">
+        <include name="*.jar"/>
+    </fileset>
+</path>
+	
+<target name="build_war" depends="clean, compile" description="build mvo_zircon war for the DFST module">
+    <echo>creating war</echo>
+    <war destfile="zircon.war" webxml="web/WEB-INF/web.xml">
+        <classes dir="build" />
+    </war>
+</target>
+
+<target name="clean" description="delete, build directorie">
+    <echo>cleaning</echo>
+    <delete dir="build" />
+</target>
+
+<target name="compile" description="compile sources and put classes under build directorie" >
+    <echo>compiling</echo>
+    <mkdir dir="build" />
+    <javac srcdir="src" destdir="build" >
+        <classpath refid="classpath"/>
+    </javac>
+</target>    	
+</project>
