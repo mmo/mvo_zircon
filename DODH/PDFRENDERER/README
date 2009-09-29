@@ -1,0 +1,40 @@
+Build and use the Applet.
+
+1. Sources.
+	You can find the java source of the Applet in 'src' directory.
+	The jar file of 'PDFRENDERER' libraries is in 'jars' directory.  
+
+2. Build and install the Applet.
+	You must create a jar file with the java source (compile java source and build jar).
+	You must sign the jar which has been created with these command lines :
+		'keytool -genkey -alias <alias_name>'
+		'jarsigner -signedjar <output.jar> <input.jar> <alias_name>'
+		
+		Note : The '<output.jar>'  is 'MyPDFViewerApplet.jar', if you want to
+			change the name you shoud modify the 'pdf_renderer' view in 
+			the 'render' method too.
+		
+	The jar Applet and the jar PDFRENDERER should be in the same directory.
+	As soon as the jar file has been signed you can set these 2 jars in 
+	'frameworks/pdf_renderer' directory.
+	
+		Note: If you want to use the last 'PDFRENDERER' jar (change the name), 
+			you must modify the 'pdf_renderer' view in the 'render' method too.
+
+3. Use "Applet".
+	You can interact with the Applet like this 'document.getElementById(<appletId>)'.
+	There are some methods :
+		doFirst() : go to first page
+		doPrev() : go to previous page
+		doNext() : go to next page
+		doLast() : go to last page
+		gotoPage(Integer : page) : go to specific page
+		getNbPages() : retrieve the number of pages
+		doZoom(Integer : factor) : zoom in the document 
+									(should be between 0.5 and 1.5, 
+									maxWidth < 2000 and minWidth > 100)
+		doOpen(String : url) : open the document with the URL (use openURL method)
+		openURL(URL : url) : open the document with the url
+	
+Links :
+https://pdf-renderer.dev.java.net
