@@ -1,0 +1,41 @@
+Download and install on Mac
+
+1. Download and install "Darwinports".
+	Go to http://darwinports.com/
+
+2. Download and install "pdftohtml".
+	Open a terminal and type in this follow command line : 
+		'sudo port install pdftohtml'
+	Enter root password and hit return.
+
+3. Use "pdftohtml".
+	You can use this follow command line :
+		'pdftohtml -c <PDF-file>'
+	If you don't want to type all command line each time 
+	you can use this script (launchConversion.sh) with this parameter :
+		'<PDF-file>'
+	
+4. Options.
+	Usage: pdftohtml [options] <PDF-file> [<html-file> <xml-file>]
+		-f <int>          : first page to convert
+  		-l <int>          : last page to convert
+  		-q                : don't print any messages or errors
+  		-h                : print usage information
+  		-help             : print usage information
+  		-p                : exchange .pdf links by .html
+  		-c                : generate complex document
+  		-i                : ignore images
+  		-noframes         : generate no frames
+  		-stdout           : use standard output
+  		-zoom <fp>        : zoom the pdf document (default 1.5)
+  		-xml              : output for XML post-processing
+  		-hidden           : output hidden text
+  		-enc <string>     : output text encoding name
+  		-dev <string>     : output device name for Ghostscript (png16m, jpeg etc)
+  		-v                : print copyright and version info
+  		-opw <string>     : owner password (for encrypted files)
+  		-upw <string>     : user password (for encrypted files)
+	
+Links :
+http://darwinports.com/
+http://sourceforge.net/projects/pdftohtml/
