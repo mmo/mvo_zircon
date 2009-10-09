@@ -2,19 +2,22 @@ How to Test this module:
 
 You must have ant and Tomcat (or another servlet server) installed. 
 If it's not the case see
- - http://ant.apache.org/manual/ to install ant
- - http://tomcat.apache.org/     to install Tomcat
+ - http://ant.apache.org/manual/ to install ant (tested with ant 1.7.1)
+ - http://tomcat.apache.org/     to install Tomcat (tested with Tomcat 5)
 
-1) download the mvo_zircon
-2) download the following(s) libs and put them under directory lib 
-	- servlet-api.jar
-3) run ant
-4) put zircon.war under Tomcat/webapps
-5) create a bundle of the mvo_edge application using sc-build
-6) copy the application (the static folder under tmp/build/) under Tomcat/webapps 
-7) in your web browser visit:
+1) clone or update the mvo_zircon repository
+2) create a folder DFST/lib under mvo_zircon
+3) put a copy of the file servlet-api.jar in the created folder (or make a
+link); it can be found in the Tomcat installation, under lib/
+4) run ant
+> ant
+5) put zircon.war under Tomcat/webapps
+6) create a bundle of the mvo_edge application with sc-build inside the mvo_edge main folder
+> sc-build
+7) copy the application (the static folder under tmp/build/) under Tomcat/webapps
+8) in your web browser visit:
 
-http://localhost:8080/static/mvo_edge/en/realeasenumber/#test&recid=recordid
+http://localhost:8080/static/mvo_edge/en/releasenumber/#test&recid=recordid
 
-realeasenumber is the number create by sproutcore
+releasenumber is the number create by sproutcore
 recordid is the id of the record of rerodoc you want to see (you can test for example: 9264, 9263, 9494 or 9171)
