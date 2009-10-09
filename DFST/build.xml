@@ -14,12 +14,12 @@
     </war>
 </target>
 
-<target name="clean" description="delete, build directorie">
+<target name="clean" description="delete, build directories">
     <echo>cleaning</echo>
     <delete dir="build" />
 </target>
 
-<target name="compile" description="compile sources and put classes under build directorie" >
+<target name="compile" description="compile sources and put classes under build directories" >
     <echo>compiling</echo>
     <mkdir dir="build" />
     <javac srcdir="src" destdir="build" >
