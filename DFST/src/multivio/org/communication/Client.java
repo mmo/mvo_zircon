@@ -1,7 +1,7 @@
 package multivio.org.communication;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -55,6 +55,27 @@ public class Client extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String logwriter = request.getParameter("log");
+		// TODO Auto-generated method stub
+		if (logwriter != null) {			
+			InputStream in = request.getInputStream();
+			try {
+				BufferedWriter out = new BufferedWriter(new FileWriter("../webapps/zircon/log.txt", true));
+				byte[] buffer = new byte[2048];
+				int read = in.read(buffer);
+				String st = new String();
+				while (read != -1) {
+					st = new String(buffer, 0, read);
+					out.write(st);
+					read = in.read(buffer);
+					out.flush();
+				}
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			in.close();
+		}	
 	}
 
 }
