@@ -22,8 +22,15 @@
 <target name="compile" description="compile sources and put classes under build directories" >
     <echo>compiling</echo>
     <mkdir dir="build" />
-    <javac srcdir="src" destdir="build" >
+    <javac srcdir="SECO/src" destdir="build" >
+        <classpath refid="classpath"/>
+    </javac> 
+    <javac srcdir="DFST/src" destdir="build" >
         <classpath refid="classpath"/>
     </javac>
+    <javac srcdir="ERRH/src" destdir="build" >
+        <classpath refid="classpath"/>
+    </javac>
+    <!--TODO add DODH javac src -->       
 </target>    	
 </project>

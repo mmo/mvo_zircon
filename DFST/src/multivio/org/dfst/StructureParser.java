@@ -1,7 +1,15 @@
 package multivio.org.dfst;
 
+import multivio.org.communication.*;
+
 import java.util.Set;
 import java.util.Arrays;
+import java.io.IOException;
+import java.io.*;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.w3c.dom.Document;
 
@@ -14,18 +22,22 @@ import org.w3c.dom.Document;
  */
 public class StructureParser {
 
-	private static StructureParser instance;
-
-	private StructureParser() {
+	public StructureParser() {
 
 	}
-
-	public static synchronized StructureParser getInstance() {
-		if (instance == null) {
-			instance = new StructureParser();
+	
+	public String getDoc (HttpServletRequest request, HttpServletResponse response) throws IOException {
+	  String res = "do get";
+	  String fileNumber = request.getParameter("recid");
+		if(fileNumber != null){
+			System.out.println("value of the request " + fileNumber);
+			ServerDocument serv = new ServerDocument();
+			Document doc = serv.getMetadataDocument("http://doc.rero.ch/record/" + fileNumber + "/export/xd?");
+			res = this.selectStrategy(doc);
 		}
-		return instance;
+	return res;
 	}
+
 
 	public String selectStrategy(Document doc) {
 		// to do choose the rigth parser

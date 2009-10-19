@@ -120,7 +120,8 @@ public class DublinCoreParser implements ParserInterface {
 			if(fileUrl.endsWith(".gif")||fileUrl.endsWith("jpg")){
 				//load image(s) into images dir
 				String defaultName = fileUrl.substring(fileUrl.lastIndexOf("/"));
-				ServerDocument.getInstance().loadImage(fileUrl, defaultName);
+				ServerDocument server = new ServerDocument();
+				server.loadImage(fileUrl, defaultName);
 				leafNode.setDefaultUrl("http://localhost:8080/zircon/images"+defaultName);
 			}
 			
@@ -140,7 +141,7 @@ public class DublinCoreParser implements ParserInterface {
 	}
 	
 	public void parsePDF(String fileURL) {
-		ServerDocument serverDoc = ServerDocument.getInstance();
+		ServerDocument serverDoc = new ServerDocument();
 		serverDoc.getPDFFile(fileURL);
 		// to do create the cdm node for this pdf
 	}

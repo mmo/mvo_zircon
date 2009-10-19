@@ -11,33 +11,23 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import multivio.org.dfst.StructureParser;
+//import multivio.org.dfst.StructureParser;
 
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 public class ServerDocument {
 
-	private static ServerDocument instance;
 
-	private ServerDocument() {}
+	public ServerDocument() {}
 
-	public static synchronized ServerDocument getInstance() {
-		if (instance == null) {
-			instance = new ServerDocument();
-		}
-		return instance;
-	}
-
-	public String getMetadataDocument(String urlDocument) {
-		String jsonResult = null;
-		try {
+	public Document getMetadataDocument(String urlDocument) {
+	  Document doc = null;
+  	try {
 			URL url = new URL(urlDocument);
 			DocumentBuilder parser = DocumentBuilderFactory.newInstance()
 					.newDocumentBuilder();
-			Document doc = parser.parse(url.openConnection().getInputStream());
-			jsonResult = StructureParser.getInstance().selectStrategy(doc);
-			
+			doc = parser.parse(url.openConnection().getInputStream());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -47,8 +37,7 @@ public class ServerDocument {
 		} catch (SAXException e) {
 			e.printStackTrace();
 		}
-		
-		return jsonResult;
+		return doc;
 	}
 
 	public void getPDFFile(String fileName) {
